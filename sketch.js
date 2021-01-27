@@ -11,22 +11,24 @@ function setup() {
     ball.shapeColor = "red";
 
     var posNode = database.ref("Ball/Position");
-    posNode.on("value", readData());
+    posNode.on("value", readData);
 }
 
 function draw() {
     background("white");
-    if (keyDown(LEFT_ARROW)) {
-        writePosition(-1, 0);
-    }
-    else if (keyDown(RIGHT_ARROW)) {
-        writePosition(1, 0);
-    }
-    else if (keyDown(UP_ARROW)) {
-        writePosition(0, -1);
-    }
-    else if (keyDown(DOWN_ARROW)) {
-        writePosition(0, +1);
+    if (pos !== undefined) {
+        if (keyDown(LEFT_ARROW)) {
+            writePosition(-3.5, 0);
+        }
+        else if (keyDown(RIGHT_ARROW)) {
+            writePosition(3.5, 0);
+        }
+        else if (keyDown(UP_ARROW)) {
+            writePosition(0, -3.5);
+        }
+        else if (keyDown(DOWN_ARROW)) {
+            writePosition(0, 3.5);
+        }
     }
     drawSprites();
 }
